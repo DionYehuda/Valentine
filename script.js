@@ -10,6 +10,7 @@ var gificon = null;
 
 
 var heartisclicked = false;
+var yesisclicked = false;
 
 var i = 0;
 var usedtext = "";
@@ -22,6 +23,10 @@ const yestext5 = "With every passing moment, my heart is drawn to the warmth of 
 const yestext6 = "Words can’t describe my love for you, so I made you this!"
 const yestext7 = "Thank you for being my Valentine."
 const yestext8 = "I Love You."
+
+const notext1 = "EHHHHHH??? Coba yaa sekali lagiii"
+const notext2 = "Kamu benerang gamaauu??"
+const notext3 = "Yaudahdeh, tapi gapapa I still love you"
 
 
 
@@ -64,7 +69,46 @@ function showbutton(){
     yesbtn.className = "yes-btn";
     yesbtn.innerHTML = "Yes";
     yesbtn.addEventListener("click", () =>{
-        btngroup.classList.remove("fadein");
+        if(yesisclicked === false){
+            yesisclicked = true;
+            yesfunc();
+        }else{
+            lastyes();
+        }
+    });
+    document.getElementById("btngroup").appendChild(yesbtn);
+    
+    nobtn = document.createElement('button');
+    nobtn.className = "no-btn";
+    nobtn.innerHTML = "No";
+    // nobtn.addEventListener("mouseover", () => {
+    //     const noBtnRect = nobtn.getBoundingClientRect();
+    //     const maxX = window.innerWidth - noBtnRect.width;
+    //     const maxY = window.innerHeight - noBtnRect.height;
+        
+    //     const randomX = Math.floor(Math.random()*maxX);
+    //     const randomY = Math.floor(Math.random()*maxY);
+        
+    //     nobtn.style.left = randomX + "px";
+    //     nobtn.style.top = randomY + "px";
+    // });
+    document.getElementById("btngroup").appendChild(nobtn);
+    
+    btngroup.classList.remove("hidden");
+    btngroup.classList.add("fadein");
+    
+}
+
+function typeAnimate(){
+    if(i < text1.length ){
+        document.getElementById("question").innerHTML += text1.charAt(i);
+        i++;
+        setTimeout(typeAnimate(usedtext), 50);
+    }
+}
+
+function yesfunc(){
+    btngroup.classList.remove("fadein");
         btngroup.classList.add("fadeout");
         gificon.classList.remove("fadein");
         gificon.classList.add("fadeout");
@@ -79,6 +123,7 @@ function showbutton(){
             question.innerHTML = yestext1;
             question.classList.remove("fadeout");
             question.classList.add("fadein");
+            // btngroup.remove();
             setTimeout(() => {
                 gificon.classList.remove("fadein");
                 gificon.classList.add("fadeout");
@@ -97,7 +142,7 @@ function showbutton(){
                         question.classList.remove("fadein");
                         question.classList.add("fadeout");
                         setTimeout(() => {
-                            gificon.src = "src/Kiss.gif";    
+                            gificon.src = "src/newt00th-newtooth.gif";    
                             gificon.classList.remove("fadeout");
                             gificon.classList.add("fadein");
                             question.innerHTML = yestext3;
@@ -121,7 +166,7 @@ function showbutton(){
                                         question.classList.remove("fadein");
                                         question.classList.add("fadeout");
                                         setTimeout(() => {
-                                            gificon.src = "src/milk-and-mocha-icegif1.gif"; 
+                                            gificon.src = "src/milk-and-mocha-hug(old).gif"; 
                                             gificon.classList.remove("fadeout");
                                             gificon.classList.add("fadein");
                                             question.innerHTML = yestext5;
@@ -163,6 +208,23 @@ function showbutton(){
                                                                     question.innerHTML = yestext8;
                                                                     question.classList.remove("fadeout");
                                                                     question.classList.add("fadein");
+                                                                    setTimeout(() => {
+                                                                        gificon.classList.remove("fadein");
+                                                                        gificon.classList.add("fadeout");
+                                                                        question.classList.remove("fadein");
+                                                                        question.classList.add("fadeout");
+                                                                        setTimeout(() => {
+                                                                            gificon.src = "src/eccomi.gif";    
+                                                                            gificon.classList.remove("fadeout");
+                                                                            gificon.classList.add("fadein");
+                                                                            question.innerHTML = "You like it??";
+                                                                            btngroup.classList.add("fadein");
+                                                                            question.classList.remove("fadeout");
+                                                                            question.classList.add("fadein");
+                                                                            btngroup.classList.remove("fadeout");
+                                                                            btngroup.classList.remove("hidden");
+                                                                        }, 3000);
+                                                                    }, 5000);
                                                                 }, 3000);
                                                             }, 5000);
                                                         }, 3000);
@@ -178,37 +240,51 @@ function showbutton(){
                 }, 3000);
             }, 5000);
         }, 3000);
-        yesbtn.addEventListener("click", () => {
-            question.innerHTML = "Hehehe";
-        });
-    });
-    document.getElementById("btngroup").appendChild(yesbtn);
-    
-    nobtn = document.createElement('button');
-    nobtn.className = "no-btn";
-    nobtn.innerHTML = "No";
-    nobtn.addEventListener("mouseover", () => {
-        const noBtnRect = nobtn.getBoundingClientRect();
-        const maxX = window.innerWidth - noBtnRect.width;
-        const maxY = window.innerHeight - noBtnRect.height;
-        
-        const randomX = Math.floor(Math.random()*maxX);
-        const randomY = Math.floor(Math.random()*maxY);
-        
-        nobtn.style.left = randomX + "px";
-        nobtn.style.top = randomY + "px";
-    });
-    document.getElementById("btngroup").appendChild(nobtn);
-    
-    btngroup.classList.remove("hidden");
-    btngroup.classList.add("fadein");
-    
 }
 
-function typeAnimate(){
-    if(i < text1.length ){
-        document.getElementById("question").innerHTML += text1.charAt(i);
-        i++;
-        setTimeout(typeAnimate(usedtext), 50);
-    }
+function nofunc1(){
+    
+}
+function nofunc2(){
+
+}
+function nofunc3(){
+
+}
+
+
+function lastyes(){
+    gificon.classList.remove("fadein");
+    gificon.classList.add("fadeout");
+    question.classList.remove("fadein");
+    question.classList.add("fadeout");
+    btngroup.classList.remove("fadein");
+    btngroup.classList.add("fadeout");
+    btngroup.classList.add("hidden");
+    setTimeout(() => {
+        gificon.src = "src/milk-and-mocha-kiss.gif";    
+        gificon.classList.remove("fadeout");
+        gificon.classList.add("fadein");
+        question.innerHTML = "AWWWW Thank You";
+        question.classList.remove("fadeout");
+        question.classList.add("fadein");
+    }, 3000);
+}
+
+function lastno(){
+    gificon.classList.remove("fadein");
+    gificon.classList.add("fadeout");
+    question.classList.remove("fadein");
+    question.classList.add("fadeout");
+    btngroup.classList.remove("fadein");
+    btngroup.classList.add("fadeout");
+    btngroup.classList.add("hidden");
+    setTimeout(() => {
+        gificon.src = "src/kiss-milk-and-mocha.gif";    
+        gificon.classList.remove("fadeout");
+        gificon.classList.add("fadein");
+        question.innerHTML = "Ahhh its okkay I still Love You";
+        question.classList.remove("fadeout");
+        question.classList.add("fadein");
+    }, 3000);
 }
