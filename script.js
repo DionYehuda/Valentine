@@ -11,6 +11,9 @@ var gificon = null;
 
 var heartisclicked = false;
 var yesisclicked = false;
+var noisclicked1 = false;
+var noisclicked2 = false;
+var noisclicked3 = false;
 
 var i = 0;
 var usedtext = "";
@@ -26,7 +29,7 @@ const yestext8 = "I Love You."
 
 const notext1 = "EHHHHHH??? Coba yaa sekali lagiii"
 const notext2 = "Kamu benerang gamaauu??"
-const notext3 = "Yaudahdeh, tapi gapapa I still love you"
+const notext3 = "Yaudahdeh, aku masih sayang sama kamu kok"
 
 
 
@@ -81,6 +84,19 @@ function showbutton(){
     nobtn = document.createElement('button');
     nobtn.className = "no-btn";
     nobtn.innerHTML = "No";
+    nobtn.addEventListener("click", () =>{
+        if(noisclicked1 === false){
+            noisclicked1 = true;
+            nofunc1();
+        }else if(noisclicked2 === false){
+            noisclicked2 = true;
+            nofunc2();
+        }else if(noisclicked3 === false){
+            btngroup.classList.add("hidden");
+            noisclicked3 = true;
+            nofunc3();
+        }
+    });
     // nobtn.addEventListener("mouseover", () => {
     //     const noBtnRect = nobtn.getBoundingClientRect();
     //     const maxX = window.innerWidth - noBtnRect.width;
@@ -243,13 +259,26 @@ function yesfunc(){
 }
 
 function nofunc1(){
-    
+    gificon.src = "src/sad1.gif"
+    question.innerHTML = notext1;
 }
+
 function nofunc2(){
-
+    gificon.src = "src/sad2.gif"
+    question.innerHTML = notext2;
 }
-function nofunc3(){
 
+function nofunc3(){
+    gificon.src = "src/sad3.gif"
+    question.innerHTML = notext3;
+    setTimeout(() => {
+        gificon.classList.remove("fadein");
+        gificon.classList.add("fadeout");
+        gificon.classList.add("hidden");
+        question.classList.remove("fadein");
+        question.classList.add("fadeout");
+        question.classList.add("hidden");
+    }, 5000);
 }
 
 
