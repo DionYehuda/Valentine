@@ -12,8 +12,17 @@ body {
     min-height: 100vh;
     background: whitesmoke;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin: 0;
-    height : 100%;
+    background: #111;
+    /* background: #ffeff3; */
+    overflow: hidden;
+}
+
+.heart {
+    width:30vh;
+}
+
+.heart:hover {
+    width: 35vh;
 }
 
 .gif {
@@ -59,4 +68,60 @@ button:nth-child(2){
     margin-left: 200px;
     background: white;
     color: #e94d58;
+}
+
+button:nth-child(3){
+    margin-left: 200px;
+    background: white;
+    color: #e94d58;
+}
+
+.zoomin {
+    animation: zoominanim 3s;
+}
+
+@keyframes zoominanim {
+    0% {
+        transform: scale(1,1);
+    }
+    100% {
+        transform: scale(15,15);
+    }
+}
+
+.fadein {
+    animation: fadein 5s;
+}
+
+.fadeout{
+    animation: fadeout 3s;
+}
+
+@keyframes fadein{
+    0% {
+        opacity : 0;
+    }
+    50% {
+        opacity : 30;
+    }
+    100% { 
+        opacity : 1;
+    }
+}
+
+@keyframes fadeout{
+    0% {
+        opacity : 1:
+    }
+    100% { 
+        opacity : 0;
+    }
+}
+
+.hidden {
+    opacity : 0;
+}
+
+.show {
+    opacity : 1;
 }
